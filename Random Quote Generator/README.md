@@ -18,7 +18,8 @@ The Random Quote Generator is a simple JavaScript project that displays a random
 
 ## Live Link
 
-```link: https://sameer-random-quote-generator.netlify.app/ ```
+
+[Random Quote Generator](https://sameer-random-quote-generator.netlify.app/)
 
 
 ## How to Use

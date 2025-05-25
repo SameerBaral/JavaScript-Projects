@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter 2</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            border: 2px solid red;
+            /* height: 300px; */
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+
+        }
+        #screen{
+            height: 60px;
+            border: 2px solid black;
+            text-align: center;
+            padding-top: 10px;
+            font-size: 30px;
+        }
+        button{
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        #inc{
+            background-color: green;
+            color: #fff;
+        }
+        #dec{
+            background-color: red;
+            color:#fff;
+        }
+        #res{
+            background-color: brown;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="screen">0</div>
+        <button id="inc">Increment</button>
+        <button id="dec">Decrement</button>
+        <button id="res">Reset</button>
+    </div>
+
+    <script>
+        // select all elements 
+        let screen = document.getElementById('screen')
+        let inc = document.getElementById('inc')
+        let dec = document.getElementById('dec')
+        let res = document.getElementById('res')
+
+        inc.addEventListener('click',()=>{
+            screen.innerText++
+        })
+        dec.addEventListener('click',()=>{
+            screen.innerText--;
+        })
+        res.addEventListener('click',()=>{
+            screen.innerText=0;
+        })
+
+    </script>
+</body>
+</html>

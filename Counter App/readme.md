@@ -18,7 +18,7 @@ A simple JavaScript counter application that allows users to increment, decremen
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/SameerBaral/counter-app.git
+    git clone https://github.com/SameerBaral/JavaScript-Projects/Counter App.git
     ```
 2. Open `index.html` in your browser.
 

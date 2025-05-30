@@ -20,7 +20,7 @@ document.body.addEventListener('click',(ev)=>{
 
 
     // random background color
-    const color=['red','blue','orange','green','purple','#F5FF33','yellow','#A133FF','pink','skyblue','black']
+    const color=['red','blue','orange','green','purple','#F5FF33','yellow','#A133FF','pink','skyblue','voilet']
     circle.style.backgroundColor = color[Math.floor(Math.random()*color.length)]
 
     document.body.appendChild(circle);

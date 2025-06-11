@@ -30,7 +30,7 @@ btn.addEventListener("click", () => {
     // errorMsg.innerText = error
   }
 
-  fetch(`http://api.weatherapi.com/v1/current.json?key=16b59ec4359f472aa18184551251901&q=${place}&aqi=yes`)
+  fetch(`https://api.weatherapi.com/v1/current.json?key=16b59ec4359f472aa18184551251901&q=${place}&aqi=yes`)
     .then(response => {
       if (!response.ok) {
         throw new Error("Invalid response");

@@ -60,7 +60,7 @@ body {
   font-size: 1em;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .weather-container button:hover {

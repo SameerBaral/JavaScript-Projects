@@ -21,7 +21,7 @@ btn.addEventListener("click", () => {
       <p>Condition: ${data.current.condition.text}</p>
       <p>Temperature: ${data.current.temp_c}°C</p>
     `;
-    place.value = ""; // 🧹 Clear input after success
+
   }
 
   function showError(error) {

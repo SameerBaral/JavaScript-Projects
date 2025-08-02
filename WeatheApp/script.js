@@ -1,42 +1,70 @@
-const btn = document.querySelector("button")
 
-btn.addEventListener("click", () => {
+const getBtn = document.querySelector("button");
+
+async function getWeatherData() {
   const place = document.getElementById("location").value.trim();
   const weatherInfo = document.getElementById("weatherInfo");
-  const errorMsg = document.getElementById("errorMsg");
 
-  // Clear previous output
-  weatherInfo.innerHTML = "";
-  errorMsg.innerText = "";
+  // Clear previous data and reset color
+  weatherInfo.innerText = "";
+  weatherInfo.style.color = "white";
 
+  console.log("📍 Location entered:", place);
+
+  // 🟥 Handle blank input
   if (place === "") {
-    errorMsg.innerText = "Please enter a location.";
+    weatherInfo.innerText = "⚠️ Please enter a location.";
     return;
   }
 
-  function updateTemp(data) {
+  // ✅ Show weather info
+  const updateTemp = (data) => {
+    console.log("✅ Weather data received:", data);
+    const locationName = `${data.location.name}, ${data.location.country}`;
+
     weatherInfo.innerHTML = `
-      <h2>${data.location.name}</h2>
-      <img src="https:${data.current.condition.icon}" alt="${data.current.condition.text}">
-      <p>Condition: ${data.current.condition.text}</p>
-      <p>Temperature: ${data.current.temp_c}°C</p>
+      <img src="${data.current.condition.icon}" alt="weather icon">
+      <p><strong>📍 ${locationName}</strong></p>
+      <p>⛅ Condition: ${data.current.condition.text}</p>
+      <p>🌡️ Temperature: ${data.current.temp_c}°C</p>
+      <p>💧 Humidity: ${data.current.humidity}%</p>
+      <p>🌬️ Wind Speed: ${data.current.wind_kph} km/h</p>
     `;
+  };
 
-  }
+  // ❌ Handle error
+  const showError = (message) => {
+    console.error("❌ Error occurred:", message);
+    weatherInfo.style.color = "white";
+    weatherInfo.innerText = `⚠️ ${message}`;
+  };
 
-  function showError(error) {
-    errorMsg.innerText = "Location not found. Please try again.";
-    
-    // errorMsg.innerText = error
-  }
+  // 🌐 Fetch weather data
+  try {
+    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=16b59ec4359f472aa18184551251901&q=${place}&aqi=yes`);
 
-  fetch(`https://api.weatherapi.com/v1/current.json?key=16b59ec4359f472aa18184551251901&q=${place}&aqi=yes`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Invalid response");
+    if (!response.ok) {
+      if (response.status === 400) {
+        showError("Invalid request. Please enter a valid location.");
+      } else {
+        showError("City not found. Please check the spelling.");
       }
-      return response.json();
-    })
-    .then(data => updateTemp(data))
-    .catch(error => showError(error));
-});
+      return;
+    }
+
+    const data = await response.json();
+
+    if (data.error) {
+      showError(data.error.message || "Location not found.");
+      return;
+    }
+
+    updateTemp(data);
+
+  } catch (error) {
+    showError("Network error. Please check your internet connection.");
+  }
+}  
+
+getBtn.addEventListener("click", getWeatherData);
+

@@ -12,8 +12,8 @@ The Weather App is a simple web application that allows users to check the curre
 ## Technologies Used
 
 - **HTML**: For structuring the web page.
-- **CSS**: For styling and designing the application's layout and appearance.
-- **JavaScript**: For implementing the logic to fetch and display weather data.
+- **CSS**: For styling , layout and responsiveness.
+- **JavaScript**: For fetching and displaying weather data like: temperature, humidity, wind speed, and weather condition.
 
 
 

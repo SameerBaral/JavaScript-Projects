@@ -41,7 +41,7 @@ async function getWeatherData() {
 
   // 🌐 Fetch weather data
   try {
-    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=16b59ec4359f472aa18184551251901&q=${place}&aqi=yes`);
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=16b59ec4359f472aa18184551251901&q=${place}&aqi=yes`);
 
     if (!response.ok) {
       if (response.status === 400) {
